@@ -7,6 +7,12 @@ Incluye CRUD, métricas.
 
 Se debe renombrar env.txt a .env para que tome las variables de entorno
 
+## Base de datos Seleccionada MongoDB
+
+# Justificación
+
+se selecciona MongoDB teniendo en cuenta rendimiento escalabilidad tem de concurrencia mejor integracion si cmabian los esquemas o nuevas estructuras y mayor control de los datos
+
 ```bash
   MONGO_URI=
   MONGO_DB_NAME=
@@ -22,6 +28,7 @@ Se debe renombrar env.txt a .env para que tome las variables de entorno
 # deploy en railway
 
 ![Logo de MLSport](deploy.png)
+https://mlsport-production.up.railway.app/
 
 ## Documentación de la API
 
