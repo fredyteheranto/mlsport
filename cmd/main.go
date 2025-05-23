@@ -17,7 +17,11 @@ import (
 	"mlsport/internal/product/infrastructure"
 	"mlsport/internal/product/usecase"
 )
-
+func init() {
+	if err := godotenv.Load(); err != nil {
+		log.Println("No se cargó archivo .env, usando variables de entorno del sistema")
+	}
+}
 func main() {
 	config.InitMongo()
 
@@ -27,10 +31,8 @@ func main() {
 
 	r := gin.Default()
 
-	// Swagger UI en /swagger/index.html
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
-	// Ruta raíz
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "Bienvenido a la API de mlsport 🎽",
@@ -38,7 +40,6 @@ func main() {
 		})
 	})
 
-	// Ruta base de API
 	api := r.Group("/api")
 	{
 		api.GET("", func(c *gin.Context) {
