@@ -1,0 +1,8 @@
+{
+  "build": {
+    "command": "go build -o mlsport ./cmd/main.go"
+  },
+  "deploy": {
+    "startCommand": "./mlsport"
+  }
+}
