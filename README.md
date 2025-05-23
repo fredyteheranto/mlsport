@@ -19,7 +19,7 @@ Se debe renombrar env.txt a .env para que tome las variables de entorno
   - Este comando instala lo necesario ejecuta las pruebas unitarias y inicia el servicio el cual esta en :8080
 ```
 
-# deploy
+# deploy en railway
 
 ![Logo de MLSport](deploy.png)
 
