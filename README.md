@@ -26,7 +26,7 @@ Se debe renombrar env.txt a .env para que tome las variables de entorno
 ## Documentación de la API
 
 ![Logo de MLSport](api.png)
-http://localhost:8080/
+http://localhost:8080/api
 
 ## CRUD de Productos Deportivos
 
