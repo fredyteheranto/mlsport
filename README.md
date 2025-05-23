@@ -3,6 +3,15 @@
 API REST en Golang para gestionar productos deportivos.  
 Incluye CRUD, métricas.
 
+## Variables de entorno
+
+Se debe renombrar env.txt a .env para que tome las variables de entorno
+
+```bash
+  MONGO_URI=
+  MONGO_DB_NAME=
+```
+
 ## Para ejecutar el proyecto
 
 ```bash
