@@ -3,6 +3,10 @@
 API REST en Golang para gestionar productos deportivos.  
 Incluye CRUD, métricas.
 
+## Stack
+
+- Golang + MongoDB
+
 ## Variables de entorno
 
 Se debe renombrar env.txt a .env para que tome las variables de entorno
