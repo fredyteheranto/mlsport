@@ -1,0 +1,238 @@
+basePath: /api
+definitions:
+  domain.Product:
+    properties:
+      brand:
+        type: string
+      category:
+        type: string
+      id:
+        type: string
+      name:
+        type: string
+      objectID:
+        type: string
+      price:
+        type: number
+      stock:
+        type: integer
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: API REST para productos deportivos.
+  title: mlsport API
+  version: "1.0"
+paths:
+  /products:
+    get:
+      description: Devuelve una lista completa de productos registrados en el sistema.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.Product'
+            type: array
+      summary: Obtener todos los productos
+      tags:
+      - Productos
+    post:
+      consumes:
+      - application/json
+      description: Permite registrar un nuevo producto en la base de datos.
+      parameters:
+      - description: Producto a registrar
+        in: body
+        name: producto
+        required: true
+        schema:
+          $ref: '#/definitions/domain.Product'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/domain.Product'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Crear nuevo producto
+      tags:
+      - Productos
+  /products/{id}:
+    delete:
+      description: Borra un producto según su ID.
+      parameters:
+      - description: ID del producto
+        in: path
+        name: id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Eliminar producto
+      tags:
+      - Productos
+    get:
+      description: Retorna la información detallada de un producto específico.
+      parameters:
+      - description: ID del producto
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Product'
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Consultar un producto por ID
+      tags:
+      - Productos
+    patch:
+      consumes:
+      - application/json
+      description: Permite actualizar solo algunos campos de un producto existente.
+      parameters:
+      - description: ID del producto
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: 'Campos a modificar (por ejemplo: stock, price)'
+        in: body
+        name: fields
+        required: true
+        schema:
+          type: object
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Actualizar parcialmente un producto
+      tags:
+      - Productos
+    put:
+      consumes:
+      - application/json
+      description: Actualiza todos los campos de un producto existente con los nuevos
+        valores proporcionados.
+      parameters:
+      - description: ID del producto
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Datos actualizados del producto
+        in: body
+        name: producto
+        required: true
+        schema:
+          $ref: '#/definitions/domain.Product'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/domain.Product'
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Reemplazar producto existente
+      tags:
+      - Productos
+  /products/categories:
+    get:
+      description: Retorna una lista de categorías derivadas de los productos registrados.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: string
+            type: array
+      summary: Listar categorías únicas
+      tags:
+      - Productos
+  /products/categories/{category}:
+    get:
+      description: Filtra los productos según la categoría proporcionada.
+      parameters:
+      - description: Nombre de la categoría
+        in: path
+        name: category
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/domain.Product'
+            type: array
+      summary: Obtener productos por categoría
+      tags:
+      - Productos
+  /products/dashboard:
+    get:
+      description: Consulta combinada que obtiene productos y métricas en paralelo.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Dashboard de productos y métricas
+      tags:
+      - Productos
+  /products/metrics:
+    get:
+      description: Devuelve métricas agregadas como total de productos, promedio de
+        precios y stock acumulado.
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Métricas de productos
+      tags:
+      - Productos
+swagger: "2.0"
