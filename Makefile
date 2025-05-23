@@ -15,8 +15,8 @@ lint:
 
 run:
 	make clean
+	go mod tidy
 	make test
-	go mod tidy 
 	go run ./cmd/main.go
 
 clean:

@@ -12,7 +12,6 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-// mockRepo que implementa domain.ProductRepository
 type mockDashboardRepo struct{}
 
 func (m *mockDashboardRepo) FindAll() ([]domain.Product, error) {
